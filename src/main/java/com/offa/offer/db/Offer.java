@@ -1,8 +1,11 @@
 package com.offa.offer.db;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
-public class Offer {
+public class Offer implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
 	
 	String offerkey;
 	String offerid;

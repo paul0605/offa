@@ -8,5 +8,20 @@ http://www.springframework.org/schema/context
 http://www.springframework.org/schema/context/spring-context-4.0.xsd">
 
      <!-- context:component-scan base-package="com.offa.offer" /-->
+     
+     <!-- Database Configuration -->
+	<import resource="database/DataSource.xml"/>
+	<import resource="database/Hibernate.xml"/>
+     
+     <!-- Stock business object -->
+    <bean id="offerBo" class="com.offa.offer.bo.OfferBoImpl" >
+   		<property name="offerDao" ref="offerDao" />
+    </bean>
+
+    <!-- Stock Data Access Object -->
+    <bean id="offerDao" class="com.offa.offer.dao.OfferDaoImpl" >
+   		<property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+     
 
 </beans>

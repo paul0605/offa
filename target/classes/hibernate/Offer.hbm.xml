@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.offa.offer.db.Offer" table="stock" catalog="mkyong">
+        <id name="offerid" type="string">
+            <column name="offerid" />
+            <generator class="identity" />
+        </id>
+        <property name="tennant" type="string">
+            <column name="tennant" length="20" not-null="true" unique="false" />
+        </property>
+        <property name="userid" type="string">
+            <column name="userid" length="20" not-null="true" unique="false" />
+        </property>
+        <property name="jobname" type="string">
+            <column name="jobname" length="20" not-null="true" unique="false" />
+        </property>
+        <property name="company" type="string">
+            <column name="company" length="50" not-null="true" unique="false" />
+        </property>
+        <property name="title" type="string">
+            <column name="title" length="50" not-null="true" unique="false" />
+        </property>
+        <property name="addressid" type="string">
+            <column name="addressid" length="50" not-null="true" unique="false" />
+        </property>
+        <property name="dateoffer" type="date">
+            <column name="dateoffer" not-null="true" unique="false" />
+        </property>
+        <property name="daterespond" type="date">
+            <column name="daterespond" not-null="true" unique="false" />
+        </property>
+        <property name="Remunerationid" type="string">
+            <column name="Remunerationid" length="50" not-null="true" unique="false" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -4,9 +4,9 @@ import com.offa.offer.db.Offer;
 
 public interface OfferBo {
 
-	void save(Offer offer);
-	void update(Offer offer);
-	void delete(Offer offer);
-	Offer findOffer(String offerId);
+	public void save(Offer offer) ;
+	public void update(Offer offer);
+	public void delete(Offer offer);
+	public Offer findOffer(String offerId);
 	
 }

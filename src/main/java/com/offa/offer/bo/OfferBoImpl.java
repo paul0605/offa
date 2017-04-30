@@ -1,10 +1,15 @@
 package com.offa.offer.bo;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import com.offa.offer.dao.OfferDao;
 import com.offa.offer.db.Offer;
 
+@Component
 public class OfferBoImpl implements OfferBo {
 	
+	@Autowired
 	OfferDao offerDao;
 
 	
@@ -17,27 +22,28 @@ public class OfferBoImpl implements OfferBo {
 		this.offerDao = offerDao;
 	}
 
-	@Override
+	
 	public void save(Offer offer) {
 		offerDao.save(offer);
 		
 	}
 
-	@Override
+	
 	public void update(Offer offer) {
-		offerDao.update(offer);
+		//offerDao.update(offer);
 		
 	}
 
-	@Override
+	
 	public void delete(Offer offer) {
-		offerDao.delete(offer);
+		//offerDao.delete(offer);
 		
 	}
 
-	@Override
+	
 	public Offer findOffer(String offerId) {
-		return offerDao.findOffer(offerId);
+		//return offerDao.findOffer(offerId);
+		return null;
 	}
 
 }

@@ -2,30 +2,46 @@ package com.offa.offer.db;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
+import org.hibernate.annotations.ForeignKey;
+import org.hibernate.annotations.GenericGenerator;
+
 public class Address implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
-	String addresskey;
-	String addressid;
+	@Id
+	@GenericGenerator(name="addressid" , strategy="increment")
+	@GeneratedValue(generator="addressid")
+	@Column(name="addressid", nullable = false)
+	Long addressid;
+	@Column(name = "addressline1", nullable = true)
 	String  addressline1;
+	@Column(name = "addressline2", nullable = true)
 	String addressline2;
+	@Column(name = "addressline3", nullable = true)
 	String addressline3; 
+	@Column(name = "city", nullable = true)
 	String city; 
+	@Column(name = "state", nullable = true)
 	String state; 
-	String country; 
+	@Column(name = "country", nullable = true)
+	String country;
+	@Column(name = "zipcode", nullable = true)
 	String zipcode;
 	
-	public String getAddresskey() {
-		return addresskey;
-	}
-	public void setAddresskey(String addresskey) {
-		this.addresskey = addresskey;
-	}
-	public String getAddressid() {
+	@OneToOne
+	@ForeignKey(name="FK_COUNTRY")
+	private Offer offer;
+	
+	public Long getAddressid() {
 		return addressid;
 	}
-	public void setAddressid(String addressid) {
+	public void setAddressid(Long addressid) {
 		this.addressid = addressid;
 	}
 	public String getAddressline1() {

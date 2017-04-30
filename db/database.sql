@@ -1,5 +1,6 @@
 CREATE TABLE Offer 
-	( offerid VARCHAR(50),
+	( offerkey int NOT NULL,
+	  offerid VARCHAR(50),
 	  tennant VARCHAR(20), 
 	  userid VARCHAR(20),
       jobname VARCHAR(20), 
@@ -8,7 +9,8 @@ CREATE TABLE Offer
       addressid VARCHAR(50),
       dateoffer DATE,
       daterespond DATE,
-      Remunerationid VARCHAR(50));
+      Remunerationid int,
+      PRIMARY KEY (offerkey));
 
 
 CREATE TABLE address 
@@ -22,13 +24,14 @@ CREATE TABLE address
       zipcode VARCHAR(50));
 
 CREATE TABLE remuneration 
-	( remunerationid VARCHAR(50), 
+	( remunerationid int , 
 	  basesalary VARCHAR(50),
       annualincrease VARCHAR(10),
       signonbonus VARCHAR(50), 
       signonbonusannualfreq VARCHAR(10),
       commissionbonus VARCHAR(50), 
-      commissionbonusannualfreq VARCHAR(10));
+      commissionbonusannualfreq VARCHAR(10),
+      PRIMARY KEY (remunerationid));
 
  CREATE TABLE otherpay 
 	( otherpayid VARCHAR(50),

@@ -3,26 +3,59 @@ package com.offa.offer.db;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
+
+@Entity
+@Table(name="Offer")
 public class Offer implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
-	String offerkey;
+	@Id
+	@GenericGenerator(name="offerkey" , strategy="increment")
+	@GeneratedValue(generator="offerkey")
+	@Column(name="offerkey", nullable = false)
+	Long offerkey;
+	@Column(name = "offerid", nullable = true)
 	String offerid;
-	String tennant; 
+	@Column(name = "tennant", nullable = true)
+	String tennant;
+	@Column(name = "userid", nullable = true)
 	String userid;
-	String jobname; 
-	String company; 
-	String title; 
-	String addressid;
+	@Column(name = "jobname", nullable = true)
+	String jobname;
+	@Column(name = "company", nullable = true)
+	String company;
+	@Column(name = "title", nullable = true)
+	String title;
+	@Column(name = "addressid", nullable = true)
+	Long addressid;
+	@Column(name = "dateoffer", nullable = true)
 	Timestamp dateoffer;
+	@Column(name = "daterespond", nullable = true)
 	Timestamp daterespond;
+	@Column(name = "Remunerationid", nullable = true)
 	String Remunerationid;
 	
-	public String getOfferkey() {
+	
+	
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="addressid")
+	Address address;
+	
+	public Long getOfferkey() {
 		return offerkey;
 	}
-	public void setOfferkey(String offerkey) {
+	public void setOfferkey(Long offerkey) {
 		this.offerkey = offerkey;
 	}
 	public String getOfferid() {
@@ -61,10 +94,10 @@ public class Offer implements Serializable{
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getAddressid() {
+	public Long getAddressid() {
 		return addressid;
 	}
-	public void setAddressid(String addressid) {
+	public void setAddressid(Long addressid) {
 		this.addressid = addressid;
 	}
 	public Timestamp getDateoffer() {
@@ -84,5 +117,11 @@ public class Offer implements Serializable{
 	}
 	public void setRemunerationid(String remunerationid) {
 		Remunerationid = remunerationid;
+	}
+	public Address getAddress() {
+		return address;
+	}
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 }
